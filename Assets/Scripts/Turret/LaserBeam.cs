@@ -5,11 +5,10 @@ using UnityEngine.UIElements;
 
 public class LaserBeam : MonoBehaviour
 {
-    [SerializeField] Transform _shootPoint;
-    [SerializeField] bool _isRotating;
-    [SerializeField] Transform _endPoint; // For rotation, because I cannot rotate the beam correctly, so set manually
-    [SerializeField] float _beamDistance = 5.0f; // Normal no movement
+    [SerializeField] float _beamDistance = 5.0f;
     [SerializeField] float _damage = 0.2f;
+    [SerializeField] Transform _shootPoint;
+    [SerializeField] Transform _endPoint; //Just to manage direction
     LineRenderer _lineRenderer;
 
     private void Start()
@@ -21,49 +20,24 @@ public class LaserBeam : MonoBehaviour
     {
         _lineRenderer.SetPosition(0, _shootPoint.position);
 
-        //This code is awful I know, I just wanted it to work
         RaycastHit hit;
-        if (_isRotating)
+        if (Physics.Raycast(_shootPoint.position, _endPoint.position - _shootPoint.position, out hit, _beamDistance))
         {
-            if (Physics.Raycast(_shootPoint.position, _endPoint.position - _shootPoint.position, out hit, _beamDistance))
+            if (hit.transform.CompareTag("Player"))
             {
-                if (hit.transform.CompareTag("Player"))
-                {
-                    _lineRenderer.SetPosition(1, _shootPoint.position + (_endPoint.position - _shootPoint.position).normalized * hit.distance);
-                    hit.transform.GetComponent<Health>().DeductHealth(_damage);
+                _lineRenderer.SetPosition(1, _shootPoint.position + (_endPoint.position - _shootPoint.position).normalized * hit.distance);
+                hit.transform.GetComponent<Health>().DeductHealth(_damage);
 
-                }
-                else
-                {
-                    _lineRenderer.SetPosition(1, _shootPoint.position + (_endPoint.position - _shootPoint.position).normalized * hit.distance);
-                }
             }
             else
             {
-                _lineRenderer.SetPosition(1, _endPoint.position);
-
+                _lineRenderer.SetPosition(1, _shootPoint.position + (_endPoint.position - _shootPoint.position).normalized * hit.distance);
             }
         }
         else
         {
-            if (Physics.Raycast(_shootPoint.position, Vector3.forward, out hit, _beamDistance))
-            {
-                if (hit.transform.CompareTag("Player"))
-                {
-                    _lineRenderer.SetPosition(1, _shootPoint.position + Vector3.forward * hit.distance);
-                    hit.transform.GetComponent<Health>().DeductHealth(_damage);
+            _lineRenderer.SetPosition(1, _shootPoint.position + (_endPoint.position - _shootPoint.position).normalized * _beamDistance);
 
-                }
-                else
-                {
-                    _lineRenderer.SetPosition(1, _shootPoint.position + Vector3.forward * hit.distance);
-                }
-            }
-            else
-            {
-                _lineRenderer.SetPosition(1, _shootPoint.position + Vector3.forward * _beamDistance);
-
-            }
         }
     }
 }

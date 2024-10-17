@@ -16,7 +16,7 @@ public class BuildCommand : Command
 
     public override void Execute()
     {
-        _agent.SetDestination(_builder.transform.position);
+        _agent.SetDestination(_builder.transform.position + (_agent.transform.position - _builder.transform.position).normalized);
     }
 
     public override bool _isComplete => BuildComplete();

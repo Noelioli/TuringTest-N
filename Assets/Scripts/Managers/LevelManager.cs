@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private bool _isFinalLevel;
+    [SerializeField] private bool _isDeath;
 
     public UnityEvent _onLevelStart;
     public UnityEvent _onLevelEnd;
@@ -22,6 +23,10 @@ public class LevelManager : MonoBehaviour
         if (_isFinalLevel)
         {
             GameManager.GetInstance().ChangeState(GameManager.GameState.GameEnd, this);
+        }
+        else if (_isDeath)
+        {
+            GameManager.GetInstance().ChangeState(GameManager.GameState.GameOver, this);
         }
         else
         {

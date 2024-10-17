@@ -10,6 +10,7 @@ TagManager:
   - Button
   - Builder
   - Pickable
+  - Keycard
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Button
   - PickObject
   - Bullet
-  - 
+  - Interactable
   - 
   - 
   - 

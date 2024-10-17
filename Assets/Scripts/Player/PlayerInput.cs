@@ -61,7 +61,7 @@ public class PlayerInput : MonoBehaviour
         _mouseX = Input.GetAxis("Mouse X");
         _mouseY = Input.GetAxis("Mouse Y");
 
-        _sprintHeld = _sprintHeld || Input.GetButtonDown("Fire3");
+        _sprintHeld = _sprintHeld || Input.GetButton("Fire3");
         _jumpPressed = _jumpPressed || Input.GetButtonDown("Jump");
         _interactPressed = _interactPressed || Input.GetKeyDown(KeyCode.E);
         _pickupPressed = _pickupPressed || Input.GetKeyDown(KeyCode.F);

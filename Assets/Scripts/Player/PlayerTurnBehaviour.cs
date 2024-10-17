@@ -17,7 +17,8 @@ public class PlayerTurnBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotatePlayer();
+        if (GameManager.GetInstance().IsInputActive())
+            RotatePlayer();
     }
 
     void RotatePlayer()

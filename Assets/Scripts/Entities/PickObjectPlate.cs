@@ -8,7 +8,7 @@ public class PickObjectPlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Pickable"))
+        if (other.CompareTag("Pickable") || other.CompareTag("Robot"))
         {
             _doorAnimator.SetBool("Door", true);
         }

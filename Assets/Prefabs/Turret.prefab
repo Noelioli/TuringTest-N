@@ -212,10 +212,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!120 &809075467071896993
 LineRenderer:
   serializedVersion: 2
@@ -237,7 +237,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3594cafb4a09f4f069de353b9942ed05, type: 2}
+  - {fileID: 2100000, guid: caf6ea0eb970bd3419f47c90822a55f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -332,11 +332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7444c458acc140b4b874e7976ccc9b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPoint: {fileID: 8102345505266601067}
-  _isRotating: 1
-  _endPoint: {fileID: 551634785186318559}
   _beamDistance: 5
-  _damage: 0.2
+  _damage: 1
+  _shootPoint: {fileID: 8102345505266601067}
+  _endPoint: {fileID: 551634785186318559}
 --- !u!1 &2178319823853046961
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2130508664578345622
 Transform:
   m_ObjectHideFlags: 0
@@ -467,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 2597163328621936258}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 30.1, z: 0}
+  m_LocalPosition: {x: 0, y: 2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -522,7 +521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4340088307201786346
 Transform:
   m_ObjectHideFlags: 0
@@ -607,10 +606,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5743390980891106461
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0adfd9153b3efd4e86a82437a98172e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpread: 45
+  maxSpread: 0
   rotationTime: 1
 --- !u!1 &8763271840492123412
 GameObject:

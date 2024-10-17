@@ -26,7 +26,8 @@ public class CameraMovementBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RotateCamera();
+        if (GameManager.GetInstance().IsInputActive())
+            RotateCamera();
     }
 
     void RotateCamera()

@@ -7,6 +7,7 @@ public class SimpleInteractor : Interactor
     [Header("Interact")]
     [SerializeField] private Camera _cam;
     [SerializeField] private LayerMask _interactionLayer;
+    [SerializeField] private LayerMask _secondaryLayer;
     [SerializeField] private float _interactionDistance;
 
     private RaycastHit _raycastHit;
@@ -32,6 +33,13 @@ public class SimpleInteractor : Interactor
                 {
                     _selectable.OnSelect();
                 }
+            }
+        }
+        else if (Physics.Raycast(ray, out _raycastHit, _interactionDistance, _secondaryLayer) && _input._interactPressed)
+        {
+            if (_raycastHit.transform.CompareTag("Keycard"))
+            {
+                _raycastHit.transform.gameObject.GetComponent<DoorKeyScript>().PickupKeycard();
             }
         }
 

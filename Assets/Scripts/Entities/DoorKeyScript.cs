@@ -7,12 +7,17 @@ public class DoorKeyScript : MonoBehaviour
 {
     public UnityEvent OnKeyPicked;
 
+    public void PickupKeycard()
+    {
+        OnKeyPicked?.Invoke();
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            OnKeyPicked?.Invoke();
-            Destroy(gameObject);
+            PickupKeycard();
         }
     }
 }

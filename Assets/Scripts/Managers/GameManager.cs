@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     private LevelManager _currentLevel;
     private int _currentLevelIndex = 0;
     private bool _isInputActive = true;
+
+    public int scene;
 
     [Header("Keycards")]
     public List<string> keycardColours;
@@ -121,6 +124,8 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("Game over, you lose");
+
+        StartCoroutine(SceneWaitTime());
     }
 
     private void GameEnd()
@@ -144,5 +149,14 @@ public class GameManager : MonoBehaviour
     public bool GetKeycard(string name)
     {
         return keycards[name];
+    }
+
+    IEnumerator SceneWaitTime()
+    {
+        _isInputActive = false;
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene(scene);
     }
 }

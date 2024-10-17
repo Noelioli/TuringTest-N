@@ -61,7 +61,6 @@ public class ObjectPool : MonoBehaviour
 
     public void RestoreObject(PooledObject obj)
     {
-        Debug.Log("Restore");
         obj.gameObject.SetActive(false);
         _usedPool.Remove(obj);
         _objectPool.Add(obj);

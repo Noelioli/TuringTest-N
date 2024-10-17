@@ -35,14 +35,15 @@ public class PlayerMovementBehaviour : MonoBehaviour
     void Update()
     {
         GroundCheck();
-        MovePlayer();
+        if (GameManager.GetInstance().IsInputActive())
+            MovePlayer();
     }
 
     void MovePlayer()
     {
         _moveMultiplier = _input._sprintHeld ? _sprintMultiplier : 1f;
 
-        _characterController.Move((transform.forward * _input._vertical + transform.right * _input._horizontal) * _moveSpeed * Time.deltaTime * _moveMultiplier);
+        _characterController.Move(_moveMultiplier * _moveSpeed * Time.deltaTime * (transform.forward * _input._vertical + transform.right * _input._horizontal));
 
         //Ground check
         if (_isGrounded && _playerVelocity.y < 0)
